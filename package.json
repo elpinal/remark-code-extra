@@ -34,6 +34,7 @@
     "build-and-test": "gulp; yarn --cwd tests run test"
   },
   "dependencies": {
-    "unist-util-visit": "^1.4.1"
+    "unist-util-visit": "^1.4.1",
+    "vfile": "^5.3.6"
   }
 }

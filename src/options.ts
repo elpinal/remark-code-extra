@@ -1,5 +1,6 @@
 import * as hast from './types/hast';
 import { MDASTCode, MDASTCodeExtra } from './types';
+import {VFile} from 'vfile';
 
 export interface TransformResults {
   /**
@@ -19,7 +20,7 @@ export interface TransformResults {
 export type Options = {
   transform:
     TransformResults |
-    ((node: MDASTCode) => (void | undefined | null | TransformResults | Promise<void | undefined | null | TransformResults>));
+    ((node: MDASTCode, file: VFile) => (void | undefined | null | TransformResults | Promise<void | undefined | null | TransformResults>));
 };
 
 export function validateOptions(value: any): value is Options {

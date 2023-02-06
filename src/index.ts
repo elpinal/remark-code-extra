@@ -10,13 +10,13 @@ const attacher: Attacher = (options) =>  {
   if (!validateOptions(options))
     throw new Error('Invalid options');
 
-  const transformer: Transformer = async (tree, _file) => {
+  const transformer: Transformer = async (tree, file) => {
 
     // List of transformations that are ocurring
     let transformations: Promise<void>[] = [];
 
     visit<MDASTCode>(tree, 'code', node => {
-      const transform = typeof options.transform === 'function' ? options.transform(node) : options.transform;
+      const transform = typeof options.transform === 'function' ? options.transform(node, file) : options.transform;
       // Asyncronously apply the transformation
       transformations.push(
         Promise.resolve(transform).then(async transform => {
